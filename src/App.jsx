@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
-import Avaliacoes from "./Avaliacoes";
+import Artigos from "./Artigos";
 import PainelToken from "./PainelToken";
 import { useAuthToken } from "./useAuthToken";
 
@@ -18,7 +18,7 @@ export default function App() {
     return (
       <div className="centro">
         <div className="card login">
-          <h1>Avaliações</h1>
+          <h1>Artigos</h1>
           <p className="discreto">Entre com sua conta para continuar.</p>
           {error && <div className="alerta">{error.message}</div>}
           <LoginButton />
@@ -31,7 +31,7 @@ export default function App() {
     <div className="pagina">
       <header className="topo">
         <div>
-          <h1>Avaliações</h1>
+          <h1>Artigos</h1>
           <span className="discreto">{email || user?.email}</span>
           <span className={isAdmin ? "selo selo-admin" : "selo"}>
             {isAdmin ? "ADMIN" : "USER"}
@@ -43,7 +43,7 @@ export default function App() {
       {erro && <div className="alerta">{erro}</div>}
 
       {token ? (
-        <Avaliacoes token={token} isAdmin={isAdmin} />
+        <Artigos token={token} isAdmin={isAdmin} />
       ) : (
         <p className="discreto">Buscando token...</p>
       )}

@@ -28,15 +28,18 @@ async function requisicao(caminho, token, opcoes = {}) {
   return resposta.json();
 }
 
-// ===== Rotas do back ===== (TODO [PROVA] trocar /avaliacoes pela rota do enunciado)
+// ===== Rotas do back ===== (GET/POST /artigo, GET/DELETE /artigo/{id})
 
-export function listarAvaliacoes(token) {
-  return requisicao("/avaliacoes", token);
+export function listarArtigos(token) {
+  return requisicao("/artigo", token);
+}
+export function criarArtigo(token, dados) {
+  return requisicao("/artigo", token, { method: "POST", body: JSON.stringify(dados) });
+}
+export function deletarArtigo(token, id) {
+  return requisicao(`/artigo/${id}`, token, { method: "DELETE" });
 }
 
-export function criarAvaliacao(token, dados) {
-  return requisicao("/avaliacoes", token, {
-    method: "POST",
-    body: JSON.stringify(dados),
-  });
+export function buscarArtigo(token, id) {
+  return requisicao(`/artigo/${id}`, token);
 }
